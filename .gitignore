@@ -36,5 +36,12 @@ Carthage/Build
 #
 Pods/
 
-dist/
-BouncyCastle-ObjC/Classes/
+# VIM
+Session.vim
+
+
+j2objc*
+
+gen/
+sources/
+headers/

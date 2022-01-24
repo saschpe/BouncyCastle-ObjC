@@ -1,5 +1,5 @@
 PODS:
-  - BouncyCastle-ObjC (0.1.0)
+  - BouncyCastle-ObjC (0.2.0)
 
 DEPENDENCIES:
   - BouncyCastle-ObjC (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BouncyCastle-ObjC: e9e35f6cf5b1333f6ce4cc6bb5ab19cbf5dfc7aa
+  BouncyCastle-ObjC: e5f8bcd7ee5db61ec473247c53059f9cf9781b55
 
 PODFILE CHECKSUM: 9147a2f86ee739973eb2cc3065beab5b74d49d6b
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.2

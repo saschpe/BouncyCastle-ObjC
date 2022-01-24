@@ -1,56 +1,46 @@
-#
-# Be sure to run `pod lib lint BouncyCastle-ObjC.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'BouncyCastle-ObjC'
-  s.version          = '0.1.2'
-  s.summary          = 'Objective-C Bouncy Castle.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-Objective-C Bouncy Castle converted from Java implement use J2ObjC. 
-                       DESC
-
-  s.homepage         = 'https://github.com/DimensionDev/BouncyCastle-ObjC'
+  s.version          = '0.2.0'
+  s.summary          = 'Bouncy Castle for Objective-C'
+  s.description      = 'Bouncy Castle for Objective-C converted from Java implementation using J2ObjC.'
+  s.homepage         = 'https://github.com/saschpe/BouncyCastle-ObjC'
   s.license          = { :type => 'AGPL', :file => 'LICENSE' }
-  s.author           = { 'CMK' => 'cirno.mainasuk@gmail.com' }
-  s.source           = { :git => 'https://github.com/DimensionDev/BouncyCastle-ObjC.git', :tag => s.version.to_s }
-
+  s.author           = { 'CMK' => 'cirno.mainasuk@gmail.com', 'saschpe' => 'sascha@peilicke.de' }
+  s.source           = { :git => 'https://github.com/saschpe/BouncyCastle-ObjC.git', :tag => s.version.to_s }
   s.prepare_command = <<-CMD
-    BouncyCastle-ObjC/Scripts/download.sh
-    BouncyCastle-ObjC/Scripts/generate.sh
+    scripts/prepare
   CMD
 
-  s.ios.deployment_target = '8.0'
-  s.requires_arc = false
+  s.ios.deployment_target = '12.0'
 
-  s.preserve_paths = 'dist/**/*', 'BouncyCastle-ObjC/**/*'
-  s.source_files = 'BouncyCastle-ObjC/Classes/**/*'
-  
+  #s.preserve_paths = 'j2objc-2.8/**/*', 'BouncyCastle-ObjC/**/*'
+  s.header_mappings_dir = 'Headers'
+  #s.header_dir = 'Headers'
+  #s.public_header_files = [
+  #  'Headers/**/*.h',
+  #  'Sources/**/*.h'
+  #]
+  #  'j2objc-2.8/frameworks/JRE.xcframework/Headers"',
+
+  #s.private_header_files = 'BouncyCastle-ObjC/Headers/**/*.h'
+  s.source_files = [
+    'Headers/**/*',
+    'Sources/**/*',
+  ]
+    #'j2objc-2.8/frameworks/JRE.xcframework/Headers"',
+  s.vendored_frameworks = [
+    #'j2objc-2.8/frameworks/JRE.xcframework'
+  ]
+
   s.xcconfig = { 
-    'LIBRARY_SEARCH_PATHS' => '"${PODS_ROOT}/BouncyCastle-ObjC/dist/lib"',
-    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/BouncyCastle-ObjC/dist/frameworks/JRE.framework/Headers"',
+    #'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/../../../j2objc-2.8/frameworks/"',
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../../../Sources" "${PODS_ROOT}/../../../j2objc-2.8/include"',
+    'LIBRARY_SEARCH_PATHS' => '"${PODS_ROOT}/../../../j2objc-2.8/lib"',
   }
-
-  s.libraries = 'jre_emul', 'z', 'iconv'
-  # enable static framework due to we use .a
-  s.static_framework = true
-  
-  # s.resource_bundles = {
-  #   'BouncyCastle-ObjC' => ['BouncyCastle-ObjC/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.pod_target_xcconfig = {
+    #'FRAMEWORK_SEARCH_PATHS' => '$(inherited) Frameworks',
+    #'HEADER_SEARCH_PATHS' => '$(inherited) Headers',
+  }
+  #s.libraries = 'jre_emul', 'z', 'iconv'
+  #s.static_framework = true
 end

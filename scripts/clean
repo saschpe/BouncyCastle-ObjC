@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+. "${SCRIPT_DIR}/inc.constants.sh"
+. "${SCRIPT_DIR}/inc.functions.sh"
+
+rm -rf \
+  Pods/ \
+  gen/ \
+  "${HEADER_DIR}" \
+  "${OUTPUT_DIR}" \
+  "${J2OBJC_PATH}"
+for file in ${J2OBJC_FILES}; do
+  rm -f "${file}"
+done
